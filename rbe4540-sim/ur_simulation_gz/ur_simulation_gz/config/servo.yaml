@@ -1,0 +1,23 @@
+servo_node:
+  ros__parameters:
+    moveit_servo:
+      move_group_name: ur_manipulator
+      command_in_type: speed_units
+      cartesian_command_in_topic: ~/delta_twist_cmds
+      command_out_topic: /joint_trajectory_controller/joint_trajectory
+      command_out_type: trajectory_msgs/JointTrajectory
+      publish_joint_positions: true
+      publish_joint_velocities: false
+      publish_period: 0.01
+      max_expected_latency: 0.1
+      incoming_command_timeout: 0.1
+      apply_twist_commands_about_ee_frame: true
+      is_primary_planning_scene_monitor: false
+      monitored_planning_scene_topic: /monitored_planning_scene
+      check_collisions: true
+      # The open gripper's opposing knuckles are normally about 7 mm apart.
+      # Keep checking these pairs, but start slowing below 5 mm, not 10 mm.
+      self_collision_proximity_threshold: 0.005
+      scale:
+        linear: 0.2
+        rotational: 0.5

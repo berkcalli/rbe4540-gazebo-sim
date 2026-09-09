@@ -1,0 +1,3 @@
+trajectory_msgs/JointTrajectoryPoint goal_point
+---
+bool success

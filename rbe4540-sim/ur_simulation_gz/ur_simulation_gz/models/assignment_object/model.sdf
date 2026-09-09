@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="assignment_object">
+    <static>false</static>
+    <link name="object">
+      <inertial>
+        <mass>0.08</mass>
+        <inertia>
+          <ixx>0.000155</ixx>
+          <iyy>0.000155</iyy>
+          <izz>0.000048</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.14</size>
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>3.0</mu>
+              <mu2>3.0</mu2>
+            </ode>
+            <bullet>
+              <friction>3.0</friction>
+              <friction2>3.0</friction2>
+            </bullet>
+          </friction>
+          <contact>
+            <ode>
+              <kp>500000</kp>
+              <kd>5</kd>
+              <max_vel>0.02</max_vel>
+              <min_depth>0.002</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.14</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.60 0.04 0.04 1</ambient>
+          <diffuse>0.90 0.08 0.08 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

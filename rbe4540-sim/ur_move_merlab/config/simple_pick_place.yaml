@@ -1,0 +1,28 @@
+jtc_client:
+  ros__parameters:
+    cartesian_planning_attempts: 3
+    cartesian_retry_delay_sec: 0.25
+    cartesian_settle_delay_sec: 0.15
+    cartesian_avoid_collisions: false
+
+fixed_pick_place:
+  ros__parameters:
+    pick_x: 0.45
+    pick_y: 0.0
+    pick_z: 0.36
+    place_x: 0.45
+    place_y: -0.24
+    place_z: 0.36
+    hover_height: 0.18
+    lift_height: 0.20
+    tool_qx: 1.0
+    tool_qy: 0.0
+    tool_qz: 0.0
+    tool_qw: 0.0
+    home_joint_positions: [-3.14, -1.67, -0.55, -1.39, 1.39, 0.0]
+    home_move_time_sec: 5.0
+    gripper_open_position: 0.0
+    gripper_closed_position: 0.70
+    gripper_wait_sec: 1.5
+    service_timeout_sec: 90.0
+    motion_timeout_sec: 45.0

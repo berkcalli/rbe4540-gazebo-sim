@@ -1,0 +1,6 @@
+# Linear velocity in m/s and angular velocity in rad/s.
+# The service name selects tool or base axes. Send zero to stop.
+geometry_msgs/Twist twist
+---
+bool success
+string message

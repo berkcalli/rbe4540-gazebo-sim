@@ -1,0 +1,25 @@
+jtc_client:
+  ros__parameters:
+    reference_frame: base_link
+    end_effector_link: tool0
+    planning_group: ur_manipulator
+    controller_name: joint_trajectory_controller
+    max_step: 0.01
+    velocity_scaling: 0.2
+    acceleration_scaling: 0.2
+    cartesian_avoid_collisions: true
+    state_timeout_sec: 2.0
+    service_timeout_sec: 5.0
+    planning_timeout_sec: 10.0
+    execution_timeout_sec: 60.0
+    cancel_timeout_sec: 5.0
+    joint_trajectory_timeout_sec: 90.0
+    cartesian_planning_attempts: 3
+    cartesian_retry_delay_sec: 0.25
+    cartesian_settle_delay_sec: 0.15
+    servo_node_name: servo_node
+    velocity_command_timeout_sec: 0.5
+    velocity_publish_period_sec: 0.02
+    velocity_stop_settle_sec: 0.3
+    max_linear_velocity: 0.2
+    max_angular_velocity: 0.5

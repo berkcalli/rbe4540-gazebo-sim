@@ -1,10 +1,13 @@
-"""Simple example: send Cartesian poses, then tool-frame velocities."""
+"""Simple example: receive camera images and send poses and velocities."""
 
 import time
 
 import rclpy
 from common_interfaces_merlab.srv import SendPose, SendTwist
+from cv_bridge import CvBridge
 from rclpy.node import Node
+from rclpy.qos import qos_profile_sensor_data
+from sensor_msgs.msg import Image
 
 
 class SimpleRun(Node):
@@ -12,6 +15,19 @@ class SimpleRun(Node):
         super().__init__('simple_run')
         self.cartesian_client = self.create_client(SendPose, '/cartesian_ref')
         self.ee_velocity_client = self.create_client(SendTwist, '/set_ee_velocity')
+        self.bridge = CvBridge()
+        self.palm_image = None  # Latest OpenCV image; None until one arrives.
+        self.palm_camera_subscriber = self.create_subscription(
+            Image,
+            '/palm_camera/image',
+            self.palm_image_callback,
+            qos_profile_sensor_data,
+        )
+
+    def palm_image_callback(self, msg):
+        """Convert the ROS image to an OpenCV image (BGR NumPy array)."""
+        self.palm_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        # Add your image processing here.
 
     def move_cartesian(self, x, y, z):
         """Move tool0 to a position in base_link (meters), pointing downward."""
@@ -22,6 +38,8 @@ class SimpleRun(Node):
         # Quaternion (x, y, z, w) = (1, 0, 0, 0).
         request.pose.orientation.x = 1.0
         request.pose.orientation.w = 0.0
+        request.pose.orientation.y = 0.0
+        request.pose.orientation.z = 0.0
 
         self.get_logger().info(f'Moving to ({x:.2f}, {y:.2f}, {z:.2f})')
         future = self.cartesian_client.call_async(request)
@@ -90,6 +108,8 @@ class SimpleRun(Node):
 
         # TODO: Implement your homework here. Edit or extend these two moves.
         # Each call waits for the robot to finish before continuing.
+        # Images are received while the motion methods spin waiting for replies.
+        # To receive images outside those methods, call rclpy.spin_once(self).
         if not self.move_cartesian(0.45, 0.0, 0.54):
             return
         if not self.move_cartesian(0.45, -0.15, 0.54):

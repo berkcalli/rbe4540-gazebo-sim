@@ -11,6 +11,7 @@
   <exec_depend>builtin_interfaces</exec_depend>
   <exec_depend>common_interfaces_merlab</exec_depend>
   <exec_depend>control_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>

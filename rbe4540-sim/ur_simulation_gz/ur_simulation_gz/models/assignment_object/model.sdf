@@ -50,6 +50,69 @@
           <specular>0.15 0.15 0.15 1</specular>
         </material>
       </visual>
+      <!-- Top-face markers: 10 mm diameter, centers at (+/-22, +/-22) mm.
+           Thin visual-only disks sit above the top face (z = 70 mm).
+           Colors are distinct from the red body for color segmentation. -->
+      <visual name="top_dot_yellow">
+        <pose>0.022 0.022 0.0703 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.0006</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>1 1 0 1</ambient>
+          <diffuse>1 1 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+      <visual name="top_dot_green">
+        <pose>-0.022 0.022 0.0703 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.0006</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 1 0 1</ambient>
+          <diffuse>0 1 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+      <visual name="top_dot_blue">
+        <pose>-0.022 -0.022 0.0703 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.0006</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 0 1 1</ambient>
+          <diffuse>0 0 1 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
+      <visual name="top_dot_cyan">
+        <pose>0.022 -0.022 0.0703 0 0 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <cylinder>
+            <radius>0.005</radius>
+            <length>0.0006</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0 1 1 1</ambient>
+          <diffuse>0 1 1 1</diffuse>
+          <specular>0 0 0 1</specular>
+        </material>
+      </visual>
     </link>
   </model>
 </sdf>

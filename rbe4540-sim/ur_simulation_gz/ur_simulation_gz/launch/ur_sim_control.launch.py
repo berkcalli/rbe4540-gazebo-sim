@@ -43,6 +43,7 @@ from launch.substitutions import (
     IfElseSubstitution,
 )
 from launch_ros.actions import Node
+from launch_ros.parameter_descriptions import ParameterValue
 from launch_ros.substitutions import FindPackageShare
 
 
@@ -89,7 +90,10 @@ def launch_setup(context, *args, **kwargs):
             controllers_file,
         ]
     )
-    robot_description = {"robot_description": robot_description_content}
+    # URDF is XML; comments containing colons must not trigger YAML parsing.
+    robot_description = {
+        "robot_description": ParameterValue(robot_description_content, value_type=str)
+    }
 
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
@@ -174,6 +178,18 @@ def launch_setup(context, *args, **kwargs):
         output="screen",
     )
 
+    palm_camera_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        name="palm_camera_bridge",
+        arguments=[
+            "/palm_camera/image@sensor_msgs/msg/Image[gz.msgs.Image",
+            "/palm_camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
+        ],
+        parameters=[{"use_sim_time": True}],
+        output="screen",
+    )
+
     nodes_to_start = [
         robot_state_publisher_node,
         joint_state_broadcaster_spawner,
@@ -181,6 +197,7 @@ def launch_setup(context, *args, **kwargs):
         gz_spawn_entity,
         gz_launch_description,
         gz_sim_bridge,
+        palm_camera_bridge,
         gripper_controller_spawner,
     ]
 

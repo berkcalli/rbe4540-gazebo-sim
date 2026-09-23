@@ -4,21 +4,6 @@ Adapted from the [PCL ICP tutorial](https://pcl.readthedocs.io/projects/tutorial
 Create five points, translate a copy by 0.7 along x, and estimate the transform
 from the original to the copy using C++ PCL.
 
-## Build and run environment
-
-For ROS 2 Jazzy and a workspace at `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-```
-
-Source both setup files in each new terminal and use Python compatible with
-the compiled module. No simulator or running ROS node is needed.
 
 ## Python example
 

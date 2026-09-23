@@ -4,30 +4,6 @@ Adapted from the [PCL VoxelGrid tutorial](https://pcl.readthedocs.io/projects/tu
 The example loads a scan, downsamples it with 0.01-unit voxels, and saves it.
 Filtering runs in C++ PCL through `pcl_python_merlab`.
 
-## Build and run environment
-
-For ROS 2 Jazzy and a workspace at `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-```
-
-Source both setup files in each new terminal and use Python compatible with
-the compiled module. No simulator or running ROS node is needed.
-
-## Download the input
-
-Save the [tutorial dataset](https://raw.githubusercontent.com/PointCloudLibrary/data/master/tutorials/table_scene_lms400.pcd)
-in the directory where you will run the script:
-
-```bash
-curl -fL https://raw.githubusercontent.com/PointCloudLibrary/data/master/tutorials/table_scene_lms400.pcd -o table_scene_lms400.pcd
-```
 
 ## Python example
 

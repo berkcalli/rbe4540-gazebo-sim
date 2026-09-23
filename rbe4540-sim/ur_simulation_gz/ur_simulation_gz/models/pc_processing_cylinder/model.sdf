@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="pc_processing_cylinder">
+    <static>false</static>
+    <link name="object">
+      <inertial>
+        <mass>0.08</mass>
+        <inertia>
+          <ixx>0.000114</ixx>
+          <iyy>0.000114</iyy>
+          <izz>0.000036</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.12</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>3.0</mu>
+              <mu2>3.0</mu2>
+            </ode>
+            <bullet>
+              <friction>3.0</friction>
+              <friction2>3.0</friction2>
+            </bullet>
+          </friction>
+          <contact>
+            <ode>
+              <kp>500000</kp>
+              <kd>5</kd>
+              <max_vel>0.02</max_vel>
+              <min_depth>0.002</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.03</radius>
+            <length>0.12</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.04 0.12 0.60 1</ambient>
+          <diffuse>0.08 0.25 0.90 1</diffuse>
+          <specular>0.15 0.15 0.15 1</specular>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

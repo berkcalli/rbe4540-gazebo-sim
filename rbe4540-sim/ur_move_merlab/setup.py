@@ -25,6 +25,7 @@ setup(
         'console_scripts': [
             'ur_move_simple_interface = ur_move_merlab.ur_move_simple_interface:main',
             'pick_place_demo = ur_move_merlab.pick_place_demo:main',
+            'pc_processing_template = ur_move_merlab.pc_processing_template:main',
             'simple_run = ur_move_merlab.simple_run:main',
         ],
     },

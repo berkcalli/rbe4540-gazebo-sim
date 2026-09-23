@@ -4,39 +4,6 @@ Adapted from the [PCL cylinder segmentation tutorial](https://pcl.readthedocs.io
 The example crops depth, estimates normals, removes a plane, and fits a cylinder
 using `pcl_python_merlab`.
 
-## Build and run environment
-
-For ROS 2 Jazzy and a workspace at `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-```
-
-Source both setup files in each new terminal and use Python compatible with
-the compiled module. No simulator or running ROS node is needed.
-
-## Download the input
-
-Save the [tutorial dataset](https://raw.githubusercontent.com/PointCloudLibrary/data/master/tutorials/table_scene_mug_stereo_textured.pcd)
-in the directory where you will run the script:
-
-```bash
-curl -fL https://raw.githubusercontent.com/PointCloudLibrary/data/master/tutorials/table_scene_mug_stereo_textured.pcd -o table_scene_mug_stereo_textured.pcd
-```
-
-## Differences required by the available bindings
-
-The tutorial uses 50-neighbor normal estimation and a normal-aware plane model.
-The local API exposes radius-based normals and ordinary plane RANSAC instead.
-This version uses `radius=0.02` and `segment_plane`; consequently it is an
-adaptation of the workflow, not a numerically identical translation. Tune the
-normal radius for your point density. Cylinder fitting still uses normals,
-RANSAC, and coefficient optimization in C++ PCL.
 
 ## Python example
 

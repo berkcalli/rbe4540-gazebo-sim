@@ -4,22 +4,6 @@ Adapted from the [PCL PassThrough tutorial](https://pcl.readthedocs.io/projects/
 This example prints five points, retains those in a z interval, and also shows
 the complementary selection using the C++ PCL filter.
 
-## Build and run environment
-
-For ROS 2 Jazzy and a workspace at `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-```
-
-Source both setup files in each new terminal and use Python compatible with
-the compiled module. No simulator or running ROS node is needed.
-
 ## Python example
 
 Save as `passthrough.py`:

@@ -8,21 +8,6 @@ Concatenation appends coordinates. It does not estimate camera poses, align
 surfaces, or remove duplicate points. If both inputs already share a frame
 and units, `cloud_a.concatenate(cloud_b)` is sufficient to combine them.
 
-## Build and run environment
-
-For ROS 2 Jazzy and a workspace at `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-```
-
-Source both setup files in each new terminal and use Python compatible with
-the compiled module. No simulator or camera is needed for this example.
 
 ## Python example: merge using a known transform
 

@@ -11,8 +11,6 @@ first, then source your workspace's `install/setup.bash`.
 
 ## Python example
 
-Save as `point_cloud_pca.py` and place your point cloud in `object.pcd`:
-
 ```python
 from pcl_python_merlab import load_pcd
 

@@ -73,7 +73,6 @@ class PointCloudGrasping(Node):
         self.grasp_publisher = self.create_publisher(PoseStamped, '~/grasp_pose', 1)
         # Cache only the latest frame; process at a manageable rate.
         self.timer = self.create_timer(period, self.process_latest_cloud)
-        self.get_logger().info('Waiting for point clouds; no robot motion is enabled.')
 
     def cloud_callback(self, msg):
         self.latest_cloud = msg
@@ -82,17 +81,10 @@ class PointCloudGrasping(Node):
         msg = self.latest_cloud
         if msg is None:
             return
-        if not msg.header.frame_id:
-            self.get_logger().warning('Point cloud has no frame_id; skipping frame.')
-            self.latest_cloud = None
-            return
         try:
-            transform = self.tf_buffer.lookup_transform(
-                self.target_frame, msg.header.frame_id,
-                Time.from_msg(msg.header.stamp),
+            transform = self.tf_buffer.lookup_transform(self.target_frame, msg.header.frame_id,Time.from_msg(msg.header.stamp),
             )
         except TransformException as exc:
-            # Do not block this callback: TF subscriptions need executor time.
             self.get_logger().warning(f'Waiting for cloud TF: {exc}', throttle_duration_sec=5.0)
             return
         self.latest_cloud = None
@@ -104,21 +96,18 @@ class PointCloudGrasping(Node):
         if len(processed) == 0:
             return
         header = Header(stamp=msg.header.stamp, frame_id=self.target_frame)
-        self.cloud_publisher.publish(point_cloud2.create_cloud_xyz32(
-            header, processed.xyz,
-        ))
+        self.cloud_publisher.publish(point_cloud2.create_cloud_xyz32(header, processed.xyz))
         pose = self.estimate_grasp(processed)
         if pose is not None:
             self.grasp_publisher.publish(PoseStamped(header=header, pose=pose))
 
     def process_cloud(self, cloud):
-        cloud = cloud.voxel_grid(self.voxel_size)  # pcl::VoxelGrid
+        cloud = cloud.voxel_grid(self.voxel_size)
 
         return cloud
 
     def estimate_grasp(self, cloud) -> Pose | None:
 
-   
         return None
 
 

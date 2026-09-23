@@ -6,23 +6,6 @@ to this project's `pcl_python_merlab` Python bindings. It creates 15 points on
 coefficients and inlier points. NumPy prepares the input; the existing C++ PCL
 implementation performs segmentation.
 
-## Build the bindings
-
-These commands assume ROS 2 Jazzy and the workspace `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-python3 -c "from pcl_python_merlab import PointCloud; print('Bindings loaded')"
-```
-
-Use a Python interpreter compatible with the compiled extension. Source the
-ROS and workspace setup files in each new terminal. The standalone example
-does not require a running ROS node, simulator, or camera.
 
 ## Python example
 

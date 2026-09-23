@@ -5,22 +5,6 @@ This example supplies a synthetic plane to the tutorial's radius-based normal
 estimator through `pcl_python_merlab`. C++ PCL computes the normals; Python
 prepares the coordinates and inspects the results.
 
-## Build and run environment
-
-For ROS 2 Jazzy and a workspace at `~/rbe4540`:
-
-```bash
-sudo apt update
-sudo apt install -y libpcl-dev pybind11-dev python3-dev python3-numpy
-source /opt/ros/jazzy/setup.bash
-cd ~/rbe4540
-colcon build --symlink-install --packages-select pcl_python_merlab
-source install/setup.bash
-```
-
-Source both setup files in each new terminal and use Python compatible with
-the compiled module. The example needs no input file, simulator, or ROS node.
-
 ## Python example
 
 Save as `normal_estimation.py`:
